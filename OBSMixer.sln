@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSMixer.Core", "src\OBSMixer.Core\OBSMixer.Core.csproj", "{718284F5-9BF3-4CBB-9358-F6695213EE76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSMixer.Plugin", "src\OBSMixer.Plugin\OBSMixer.Plugin.csproj", "{FD38E440-623F-42CF-93CD-23EC8F707231}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSMixer.Tests", "tests\OBSMixer.Tests\OBSMixer.Tests.csproj", "{A23E2949-EE5A-4AE5-BA41-EFCE1E140B29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{718284F5-9BF3-4CBB-9358-F6695213EE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{718284F5-9BF3-4CBB-9358-F6695213EE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{718284F5-9BF3-4CBB-9358-F6695213EE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{718284F5-9BF3-4CBB-9358-F6695213EE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD38E440-623F-42CF-93CD-23EC8F707231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD38E440-623F-42CF-93CD-23EC8F707231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD38E440-623F-42CF-93CD-23EC8F707231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD38E440-623F-42CF-93CD-23EC8F707231}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23E2949-EE5A-4AE5-BA41-EFCE1E140B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23E2949-EE5A-4AE5-BA41-EFCE1E140B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23E2949-EE5A-4AE5-BA41-EFCE1E140B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23E2949-EE5A-4AE5-BA41-EFCE1E140B29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

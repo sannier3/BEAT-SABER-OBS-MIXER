@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net8.0</TargetFramework><IsPackable>false</IsPackable><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+  <PropertyGroup Condition="'$(BeatSaberDir)' != ''">
+    <DefineConstants>$(DefineConstants);BSIPA_MANIFEST_TESTS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(BeatSaberDir)' != ''">
+    <Reference Include="Hive.Versioning">
+      <HintPath>$(BeatSaberDir)/Libs/Hive.Versioning.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../src/OBSMixer.Plugin/manifest.json" LogicalName="OBSMixer.Tests.PluginManifest.json" />
+  </ItemGroup>
+  <Target Name="CheckManifestParserReference" BeforeTargets="ResolveAssemblyReferences" Condition="'$(BeatSaberDir)' != ''">
+    <Error Condition="!Exists('$(BeatSaberDir)/Libs/Hive.Versioning.dll')" Text="BSIPA manifest validation requires $(BeatSaberDir)/Libs/Hive.Versioning.dll." />
+  </Target>
+  <ItemGroup>
+    <ProjectReference Include="../../src/OBSMixer.Core/OBSMixer.Core.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="all" />
+  </ItemGroup>
+</Project>

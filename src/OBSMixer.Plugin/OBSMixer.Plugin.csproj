@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="Local.props" Condition="Exists('Local.props')" />
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework><LangVersion>latest</LangVersion><AssemblyName>OBSMixer</AssemblyName>
+    <Version>0.1.0</Version><GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <ManagedDir>$(BeatSaberDir)/Beat Saber_Data/Managed</ManagedDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../OBSMixer.Core/OBSMixer.Core.csproj" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="IPA.Loader"><HintPath>$(BeatSaberDir)/Beat Saber_Data/Managed/IPA.Loader.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ChatPlexSDK_BS"><HintPath>$(BeatSaberDir)/Plugins/ChatPlexSDK_BS.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Main"><HintPath>$(ManagedDir)/Main.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BeatSaber.ViewSystem"><HintPath>$(ManagedDir)/BeatSaber.ViewSystem.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BGLib.Polyglot"><HintPath>$(ManagedDir)/BGLib.Polyglot.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="GameplayCore"><HintPath>$(ManagedDir)/GameplayCore.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="HMUI"><HintPath>$(ManagedDir)/HMUI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="HMLib"><HintPath>$(ManagedDir)/HMLib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BS_Utils"><HintPath>$(BeatSaberDir)/Plugins/BS_Utils.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BSML"><HintPath>$(BeatSaberDir)/Plugins/BSML.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(ManagedDir)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(ManagedDir)/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(ManagedDir)/UnityEngine.ImageConversionModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.InputLegacyModule"><HintPath>$(ManagedDir)/UnityEngine.InputLegacyModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UIModule"><HintPath>$(ManagedDir)/UnityEngine.UIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>$(ManagedDir)/UnityEngine.TextRenderingModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(ManagedDir)/UnityEngine.UI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.TextMeshPro"><HintPath>$(ManagedDir)/Unity.TextMeshPro.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <ItemGroup><EmbeddedResource Include="manifest.json" LogicalName="OBSMixer.manifest.json" /></ItemGroup>
+  <Target Name="CheckGameReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(ManagedDir)/BeatSaber.ViewSystem.dll')" Text="Missing Beat Saber 1.40.8 game assembly: BeatSaber.ViewSystem.dll. Check BeatSaberDir." />
+    <Error Condition="!Exists('$(ManagedDir)/BGLib.Polyglot.dll')" Text="Missing Beat Saber 1.40.8 game assembly: BGLib.Polyglot.dll. Check BeatSaberDir." />
+    <Error Condition="!Exists('$(BeatSaberDir)/Plugins/ChatPlexSDK_BS.dll')" Text="Set BeatSaberDir to a modded Beat Saber 1.40.8 installation with ChatPlexSDK_BS 6.4.2." />
+    <GetAssemblyIdentity AssemblyFiles="$(BeatSaberDir)/Plugins/ChatPlexSDK_BS.dll">
+      <Output TaskParameter="Assemblies" ItemName="_ChatPlexIdentity" />
+    </GetAssemblyIdentity>
+    <Error Condition="'%(_ChatPlexIdentity.Version)' != '6.4.2.0'" Text="This Beat Saber 1.40.8 build requires ChatPlexSDK_BS 6.4.2.0. Found %(_ChatPlexIdentity.Version)." />
+  </Target>
+</Project>

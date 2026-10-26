@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataSchema/master/Schema.json",
+  "id": "OBSMixer",
+  "name": "OBS Mixer",
+  "author": "JBSAN",
+  "version": "0.1.0",
+  "description": "Native VR audio mixer for OBS Studio over obs-websocket v5.",
+  "gameVersion": "1.40.8",
+  "dependsOn": {
+    "BSIPA": "^4.3.0",
+    "ChatPlexSDK_BS": "=6.4.2",
+    "BeatSaberMarkupLanguage": "^1.12.5",
+    "BS Utils": "^1.14.2"
+  }
+}
