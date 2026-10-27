@@ -32,10 +32,10 @@
   <Target Name="CheckGameReferences" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(ManagedDir)/BeatSaber.ViewSystem.dll')" Text="Missing Beat Saber 1.40.8 game assembly: BeatSaber.ViewSystem.dll. Check BeatSaberDir." />
     <Error Condition="!Exists('$(ManagedDir)/BGLib.Polyglot.dll')" Text="Missing Beat Saber 1.40.8 game assembly: BGLib.Polyglot.dll. Check BeatSaberDir." />
-    <Error Condition="!Exists('$(BeatSaberDir)/Plugins/ChatPlexSDK_BS.dll')" Text="Set BeatSaberDir to a modded Beat Saber 1.40.8 installation with ChatPlexSDK_BS 6.4.2." />
+    <Error Condition="!Exists('$(BeatSaberDir)/Plugins/ChatPlexSDK_BS.dll')" Text="Set BeatSaberDir to a modded Beat Saber 1.40.8 installation with ChatPlexSDK_BS 6.4.2, 6.4.4 or 6.4.5 for Beat Saber 1.40.8." />
     <GetAssemblyIdentity AssemblyFiles="$(BeatSaberDir)/Plugins/ChatPlexSDK_BS.dll">
       <Output TaskParameter="Assemblies" ItemName="_ChatPlexIdentity" />
     </GetAssemblyIdentity>
-    <Error Condition="'%(_ChatPlexIdentity.Version)' != '6.4.2.0'" Text="This Beat Saber 1.40.8 build requires ChatPlexSDK_BS 6.4.2.0. Found %(_ChatPlexIdentity.Version)." />
+    <Error Condition="'%(_ChatPlexIdentity.Version)' != '6.4.2.0' And '%(_ChatPlexIdentity.Version)' != '6.4.4.0' And '%(_ChatPlexIdentity.Version)' != '6.4.5.0'" Text="This Beat Saber 1.40.8 build requires ChatPlexSDK_BS 6.4.2.0, 6.4.4.0 or 6.4.5.0 for Beat Saber 1.40.8. Found %(_ChatPlexIdentity.Version)." />
   </Target>
 </Project>

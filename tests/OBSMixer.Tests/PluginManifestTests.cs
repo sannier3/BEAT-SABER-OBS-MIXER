@@ -27,8 +27,9 @@ public sealed class PluginManifestTests
         }
 
         var chatPlex = new VersionRange((string)dependencies["ChatPlexSDK_BS"]);
-        Assert.True(chatPlex.Matches(new HiveVersion("6.4.2")));
-        foreach (string other in new[] { "6.4.1", "6.4.3", "6.4.5", "7.0.0" })
+        foreach (string supported in new[] { "6.4.2", "6.4.4", "6.4.5" })
+            Assert.True(chatPlex.Matches(new HiveVersion(supported)));
+        foreach (string other in new[] { "6.3.3", "6.4.1", "6.4.3", "6.4.6", "6.5.0", "7.0.0", "6.4.5-beta.1" })
             Assert.False(chatPlex.Matches(new HiveVersion(other)));
 
         var bsipa = new VersionRange((string)dependencies["BSIPA"]);

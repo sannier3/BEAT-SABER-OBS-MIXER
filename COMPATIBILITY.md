@@ -8,7 +8,7 @@
 | --- | --- |
 | Beat Saber | PC Windows 1.40.8 |
 | BSIPA | ^4.3.0 |
-| ChatPlexSDK_BS | 6.4.2, assembly identity 6.4.2.0 |
+| ChatPlexSDK_BS | 6.4.2, 6.4.4 or 6.4.5; Beat Saber 1.40.8 builds |
 | OBSMixer plugin | net48 |
 | OBSMixer.Core | netstandard2.0 |
 | Tests | net8.0 |
@@ -39,14 +39,20 @@ Sixteen files covering panel interfaces, views, XUI controls, factories and modu
 
 ## Compatibility changes
 
-- The OBSMixer manifest targets 1.40.8 and requires exactly ChatPlexSDK_BS 6.4.2 using the Hive range `=6.4.2`.
+- The OBSMixer manifest targets 1.40.8 and allows ChatPlexSDK_BS 6.4.2, 6.4.4 and 6.4.5 using the Hive range `=6.4.2 || =6.4.4 || =6.4.5`.
 - The plugin and its reference package target net48.
 - PowerShell checks the ChatPlex DLL version before running tests and building.
 - The MSBuild project also checks this version for direct IDE builds.
 - Build output is collected from `bin/Release/net48`.
 - The README, command examples and validation report target this game instance.
 
-Version checks do not install or replace ChatPlex. If the instance contains another version, the build stops with an explicit error.
+Version checks do not install or replace ChatPlex. If the instance contains a version outside this list, the build stops with an explicit error.
+
+## SDK compatibility comparison
+
+The 35 SDK types and 110 member references used by the released OBSMixer DLL were checked against the official SDK DLLs. No required type or signature is missing in 6.4.2, 6.4.4 or 6.4.5. Versions 6.3.3 and 6.4.1 lack `_XUIPOrSButton.SetBackgroundColor`, added by generic SDK commit `168ed2d9ea66b594cf8bee82d92f4987f88537d8`. SDK 6.4.3 has no verified 1.40.8 release package and is excluded. Future versions are excluded pending review. SDK 6.4.4/6.4.5 declare SongCore `^3.15.0`; select their **1.40.0-to-1.40.8** assets. These are static compatibility checks, not in-game test results.
+
+Use the without-SDK ZIP to preserve an existing compatible SDK. The full published ZIP bundles 6.4.2.
 
 ## Validation limits
 

@@ -32,8 +32,9 @@ foreach ($file in $required) {
 }
 $chatPlexPath = Join-Path $BeatSaberDir 'Plugins/ChatPlexSDK_BS.dll'
 $chatPlexVersion = [System.Reflection.AssemblyName]::GetAssemblyName($chatPlexPath).Version
-if ($chatPlexVersion -ne [version]'6.4.2.0') {
-    throw "This Beat Saber 1.40.8 build requires ChatPlexSDK_BS 6.4.2.0. Found $chatPlexVersion."
+$supportedSdkVersions = @([version]'6.4.2.0', [version]'6.4.4.0', [version]'6.4.5.0')
+if ($chatPlexVersion -notin $supportedSdkVersions) {
+    throw "This Beat Saber 1.40.8 build requires ChatPlexSDK_BS 6.4.2.0, 6.4.4.0 or 6.4.5.0 for Beat Saber 1.40.8. Found $chatPlexVersion."
 }
 Write-Host "Target: Beat Saber 1.40.8 / ChatPlexSDK_BS $chatPlexVersion / .NET Framework 4.8"
 if (!$SkipTests) {
@@ -54,6 +55,16 @@ Get-ChildItem -LiteralPath (Join-Path $projectRoot 'third-party/ChatPlexSDK_BS')
 }
 foreach ($notice in @('THIRD-PARTY-NOTICES.md', 'THIRD-PARTY-NOTICES.fr.md')) {
     $noticeText = Get-Content -LiteralPath (Join-Path $projectRoot $notice) -Raw -Encoding UTF8
+    if ($chatPlexVersion -ne [version]'6.4.2.0') {
+        $sdkVersionText = $chatPlexVersion.ToString(3)
+        $sdkHash = (Get-FileHash -LiteralPath $chatPlexPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        $noticeText = $noticeText.Replace('**ChatPlexSDK_BS 6.4.2**', "**ChatPlexSDK_BS $sdkVersionText**")
+        $originStart = $noticeText.IndexOf('## Origin')
+        if ($originStart -lt 0) { $originStart = $noticeText.IndexOf('## Provenance') }
+        $originEnd = $noticeText.IndexOf('## ', $originStart + 3)
+        $origin = "## SDK provenance / Provenance du SDK`n`nChatPlexSDK_BS $sdkVersionText, copied from the build instance / copié depuis l’instance de compilation.`n`nSHA-256: $sdkHash`n`n"
+        $noticeText = $noticeText.Substring(0, $originStart) + $origin + $noticeText.Substring($originEnd)
+    }
     $noticeText = $noticeText.Replace('(README.md)', '(README-OBSMixer.md)').Replace('(README.fr.md)', '(README-OBSMixer.fr.md)')
     Set-Content -LiteralPath (Join-Path $package $notice) -Value $noticeText -Encoding UTF8 -NoNewline
 }
@@ -70,6 +81,15 @@ foreach ($entry in $readmeFiles.GetEnumerator()) {
     }
     Set-Content -LiteralPath (Join-Path $package $entry.Value) -Value $readme -Encoding UTF8 -NoNewline
 }
+$withoutSdk = Join-Path $projectRoot 'dist/package-without-sdk'
+if (Test-Path $withoutSdk) { Remove-Item -LiteralPath $withoutSdk -Recurse -Force }
+New-Item -ItemType Directory -Force -Path "$withoutSdk/Plugins", "$withoutSdk/Libs" | Out-Null
+Copy-Item -LiteralPath "$package/Plugins/OBSMixer.dll" -Destination "$withoutSdk/Plugins/OBSMixer.dll"
+Copy-Item -LiteralPath "$package/Libs/OBSMixer.Core.dll" -Destination "$withoutSdk/Libs/OBSMixer.Core.dll"
+Get-ChildItem -LiteralPath $package -Filter '*.md' | ForEach-Object {
+    Copy-Item -LiteralPath $_.FullName -Destination "$withoutSdk/$($_.Name)"
+}
+Compress-Archive -Path "$withoutSdk/*" -DestinationPath (Join-Path $projectRoot 'dist/OBSMixer-0.1.0-without-sdk.zip') -Force
 Compress-Archive -Path "$package/*" -DestinationPath (Join-Path $projectRoot 'dist/OBSMixer-0.1.0.zip') -Force
 if ($Install) {
     Copy-Item -LiteralPath "$package/Plugins/OBSMixer.dll" -Destination "$BeatSaberDir/Plugins/OBSMixer.dll"
@@ -77,3 +97,5 @@ if ($Install) {
     Copy-Item -LiteralPath "$package/Libs/OBSMixer.Core.dll" -Destination "$BeatSaberDir/Libs/OBSMixer.Core.dll"
 }
 Write-Host "Package: $projectRoot/dist/OBSMixer-0.1.0.zip"
+
+Write-Host "Without SDK: $projectRoot/dist/OBSMixer-0.1.0-without-sdk.zip"

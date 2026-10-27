@@ -8,7 +8,7 @@
 | --- | --- |
 | Beat Saber | PC Windows 1.40.8 |
 | BSIPA | ^4.3.0 |
-| ChatPlexSDK_BS | 6.4.2, identité d'assembly 6.4.2.0 |
+| ChatPlexSDK_BS | 6.4.2, 6.4.4 ou 6.4.5 ; packages Beat Saber 1.40.8 |
 | Plugin OBSMixer | net48 |
 | Cœur OBSMixer.Core | netstandard2.0 |
 | Tests | net8.0 |
@@ -39,14 +39,20 @@ Seize fichiers couvrant les interfaces de panneau, vues, contrôles XUI, factori
 
 ## Changements apportés
 
-- Le manifeste OBSMixer cible 1.40.8 et exige ChatPlexSDK_BS 6.4.2 exactement, avec la plage Hive `=6.4.2`.
+- Le manifeste OBSMixer cible 1.40.8 et autorise ChatPlexSDK_BS 6.4.2, 6.4.4 et 6.4.5 avec la plage Hive `=6.4.2 || =6.4.4 || =6.4.5`.
 - Le plugin et son package de références ciblent net48.
 - PowerShell vérifie la version de la DLL ChatPlex avant de lancer les tests et le build.
 - Le projet MSBuild vérifie aussi cette version pour les compilations directes depuis un IDE.
 - Le chemin de collecte des DLL est passé à `bin/Release/net48`.
 - Le README, les exemples de commandes et le rapport de validation ciblent la nouvelle instance.
 
-Les gardes de version n'installent ni ne remplacent ChatPlex automatiquement. Si l'instance contient une autre version, le build s'arrête avec une erreur explicite.
+Les gardes de version n'installent ni ne remplacent ChatPlex automatiquement. Si l'instance contient une version hors de cette liste, le build s'arrête avec une erreur explicite.
+
+## Comparaison de compatibilité SDK
+
+Les 35 types SDK et 110 références de membres utilisés par la DLL OBSMixer publiée ont été comparés aux DLL officielles. Aucun type ni signature requis ne manque dans les versions 6.4.2, 6.4.4 et 6.4.5. Les versions 6.3.3 et 6.4.1 ne proposent pas `_XUIPOrSButton.SetBackgroundColor`, ajouté par le commit SDK générique `168ed2d9ea66b594cf8bee82d92f4987f88537d8`. La 6.4.3 n’a pas de package 1.40.8 vérifié et reste exclue. Les futures versions restent exclues dans l’attente d’une analyse. Les SDK 6.4.4/6.4.5 déclarent SongCore `^3.15.0` ; choisissez leurs archives **1.40.0-to-1.40.8**. Ces vérifications statiques ne remplacent pas des essais en jeu.
+
+Utilisez le ZIP sans SDK pour préserver un SDK compatible existant. Le ZIP complet publié inclut la 6.4.2.
 
 ## Limite de validation
 

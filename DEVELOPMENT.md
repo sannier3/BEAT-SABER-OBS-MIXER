@@ -8,7 +8,7 @@ This document covers building the project. For user installation instructions, s
 
 - Windows, PowerShell and the .NET 8 SDK.
 - A modded Beat Saber PC 1.40.8 instance with the manifest dependencies installed.
-- ChatPlexSDK_BS 6.4.2, assembly identity 6.4.2.0.
+- ChatPlexSDK_BS 6.4.2, 6.4.4 or 6.4.5, built for Beat Saber 1.40.8. The reference build uses 6.4.2.
 
 The plugin targets .NET Framework 4.8, the core targets netstandard2.0 and the tests target .NET 8. Game assemblies are compilation references and are not redistributed. BeatSaber.ViewSystem.dll provides the base class for selection controllers; BGLib.Polyglot.dll provides the game's language model.
 
@@ -55,7 +55,7 @@ The user guides are renamed during packaging and their links are adjusted for th
 
 Before publishing, confirm a successful build, then test in game: OBS connection and reconnection, volume/mute/details, scenes, visibility restricted to home/song selection/pause, three positions for the mixer and scene windows, padlocks, and automatic/manual languages. Also check the preview's shared position and eye toggle. [VALIDATION.md](VALIDATION.md) records checks and known validation limits.
 
-Attach **dist/OBSMixer-0.1.0.zip** to the GitHub release and list Beat Saber **1.40.8**, ChatPlexSDK_BS **6.4.2** and the other dependencies in its notes. The BSMG announcement should link to that release. This does not imply validation or approval by BSMG.
+Attach **dist/OBSMixer-0.1.0.zip** and **dist/OBSMixer-0.1.0-without-sdk.zip** to the GitHub release and list Beat Saber **1.40.8**, allowed ChatPlexSDK_BS versions **6.4.2, 6.4.4 and 6.4.5**, and the other dependencies in its notes. State which SDK versions have only static compatibility checks. The BSMG announcement should link to that release. This does not imply validation or approval by BSMG.
 
 ## Project structure
 
@@ -83,3 +83,7 @@ The supplied PNG is stored in `src/OBSMixer.Plugin/Resources/StreamerAssistant.p
 ## Documentation
 
 [User guide](README.md) · [Development](DEVELOPMENT.md) · [Compatibility](COMPATIBILITY.md) · [Validation](VALIDATION.md)
+
+## SDK packaging
+
+The script produces `OBSMixer-0.1.0.zip` and `OBSMixer-0.1.0-without-sdk.zip`. Only the full archive includes the SDK from the build instance and its license notices. Its provenance note records a different SDK version and hash when applicable. The published full archive uses 6.4.2. Use the without-SDK archive with an existing accepted SDK. `-Install` preserves the installed SDK. The mod remains version 0.1.0.

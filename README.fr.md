@@ -19,12 +19,14 @@ Les fenêtres apparaissent à l’accueil, dans la sélection des morceaux et pe
 | --- | --- |
 | Beat Saber | **PC Windows 1.40.8**, avec les mods activés |
 | BSIPA | 4.3.x |
-| ChatPlexSDK_BS | **6.4.2** |
+| ChatPlexSDK_BS | **6.4.2, 6.4.4 ou 6.4.5**, package pour Beat Saber 1.40.8 |
 | BeatSaberMarkupLanguage (BSML) | 1.12.5 ou une version ultérieure compatible avec Beat Saber 1.40.8 |
 | BS_Utils | 1.14.2 ou une version ultérieure compatible avec Beat Saber 1.40.8 |
 | OBS Studio | Serveur obs-websocket **v5** activé, intégré à OBS Studio depuis la version 28 |
 
-ChatPlexSDK_BS **6.4.2 est inclus** dans le ZIP **OBSMixer-0.1.0.zip** mis à jour. Vous n’avez pas besoin de télécharger ni d’installer BS+. Installez séparément BSIPA, BSML, BS_Utils et leurs dépendances dans la même instance du jeu. Si une autre version de ChatPlexSDK_BS est déjà installée, utilisez une instance 1.40.8 distincte pour éviter de remplacer une version nécessaire à d’autres mods. Les autres versions de Beat Saber et les installations autonomes sur Quest ne sont pas prises en charge par ce package.
+Deux ZIP sont disponibles : **OBSMixer-0.1.0.zip** inclut ChatPlexSDK_BS **6.4.2** ; **OBSMixer-0.1.0-without-sdk.zip** conserve votre SDK déjà installé. Avec BS+ ou un autre mod Hardcpp, utilisez le ZIP **sans SDK** si votre version est **6.4.2, 6.4.4 ou 6.4.5** et prévue pour Beat Saber **1.40.8**. N’écrasez pas un SDK plus récent avec celui du ZIP complet. Aucun module BS+ n’est nécessaire. Installez séparément BSIPA, BSML, BS_Utils et leurs dépendances. Les SDK 6.4.4 et 6.4.5 exigent aussi SongCore **3.15.0 ou supérieur compatible avec le jeu**.
+
+Les API des versions 6.4.4 et 6.4.5 ont été vérifiées dans les DLL officielles ; leur fonctionnement en jeu reste à confirmer. La 6.4.1 manque d’une méthode utilisée par le mod ; la 6.4.3 et les versions ultérieures à 6.4.5 ne sont pas autorisées. Les autres versions du jeu et le Quest autonome ne sont pas pris en charge.
 
 OBS Mixer se connecte directement à OBS. Aucun compte sur un site ni installation de Streamer Assistant n’est nécessaire.
 
@@ -43,6 +45,8 @@ Plugins/OBSMixer.dll
 Plugins/ChatPlexSDK_BS.dll
 Libs/OBSMixer.Core.dll
 ```
+
+Le ZIP sans SDK contient les deux DLL OBSMixer ; conservez votre `Plugins/ChatPlexSDK_BS.dll` compatible déjà présent.
 
 Avec BSManager, ouvrez le dossier de votre **instance 1.40.8** et installez le mod dedans. Une release compilée s’installe sans PowerShell ni SDK .NET.
 

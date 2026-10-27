@@ -176,3 +176,9 @@ The personal website link has been removed. Separate buttons now open the sannie
 ## Documentation
 
 [User guide](README.md) · [Development](DEVELOPMENT.md) · [Compatibility](COMPATIBILITY.md) · [Validation](VALIDATION.md)
+
+## SDK allowlist update, version 0.1.0 unchanged
+
+The manifest and both build guards now allow exactly 6.4.2, 6.4.4 and 6.4.5. The optional Hive manifest test checks all three and rejects 6.3.3, 6.4.1, 6.4.3, 6.4.6, 6.5.0, 7.0.0 and 6.4.5-beta.1. Official binary inspection found all 35 required SDK types and 110 member references in 6.4.4 and 6.4.5. In-game tests have not been run for those versions.
+
+CoreCLR still fails to initialize in this environment (0x8007000E); neither compilation nor .NET tests are claimed. The distributed DLL is updated in place only within its embedded JSON manifest, using padding to preserve resource size. It is unsigned. PE headers, CLI metadata, all bytes outside that JSON resource, the logo and the Core DLL are verified unchanged. Both archives contain the updated manifest and keep assembly/plugin version 0.1.0.

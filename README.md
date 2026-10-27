@@ -19,12 +19,14 @@ The windows appear on the home screen, during song selection and while a song is
 | --- | --- |
 | Beat Saber | **PC Windows 1.40.8**, with mods enabled |
 | BSIPA | 4.3.x |
-| ChatPlexSDK_BS | **6.4.2** |
+| ChatPlexSDK_BS | **6.4.2, 6.4.4 or 6.4.5**, Beat Saber 1.40.8 build |
 | BeatSaberMarkupLanguage (BSML) | 1.12.5 or a later version compatible with Beat Saber 1.40.8 |
 | BS_Utils | 1.14.2 or a later version compatible with Beat Saber 1.40.8 |
 | OBS Studio | obs-websocket **v5** enabled; included with OBS Studio 28 and newer |
 
-ChatPlexSDK_BS **6.4.2 is included** in the updated **OBSMixer-0.1.0.zip**. You do not need to download or install BS+. Install BSIPA, BSML, BS_Utils and their dependencies separately in the same game instance. If another ChatPlexSDK_BS version is already installed, use a separate 1.40.8 instance to avoid replacing a version required by other mods. Other Beat Saber versions and standalone Quest installations are not supported by this package.
+Two ZIPs are available: **OBSMixer-0.1.0.zip** includes ChatPlexSDK_BS **6.4.2**; **OBSMixer-0.1.0-without-sdk.zip** keeps your installed SDK. With BS+ or another Hardcpp mod, use the **without-SDK ZIP** if your SDK is **6.4.2, 6.4.4 or 6.4.5** and built for Beat Saber **1.40.8**. Do not overwrite a newer SDK with the one in the full ZIP. No BS+ modules are required. Install BSIPA, BSML, BS_Utils and their dependencies separately. SDK 6.4.4 and 6.4.5 also require SongCore **3.15.0 or newer compatible with the game**.
+
+The APIs in SDK 6.4.4 and 6.4.5 have been checked in the official DLLs; in-game behavior still needs confirmation. SDK 6.4.1 lacks a method used by this mod; 6.4.3 and versions above 6.4.5 are not allowed. Other game versions and standalone Quest are not supported.
 
 OBS Mixer connects directly to OBS. No website account or Streamer Assistant installation is required.
 
@@ -43,6 +45,8 @@ Plugins/OBSMixer.dll
 Plugins/ChatPlexSDK_BS.dll
 Libs/OBSMixer.Core.dll
 ```
+
+The without-SDK ZIP contains the two OBSMixer DLLs; keep your existing compatible `Plugins/ChatPlexSDK_BS.dll`.
 
 With BSManager, open the folder of your **1.40.8 instance** and install there. You do not need PowerShell or a .NET SDK to install a compiled release.
 

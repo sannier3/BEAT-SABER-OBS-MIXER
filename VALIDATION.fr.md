@@ -187,3 +187,9 @@ Le lien du site personnel est retiré. Deux boutons distincts ouvrent désormais
 ## Documentation
 
 [Guide utilisateur](README.fr.md) · [Développement](DEVELOPMENT.fr.md) · [Compatibilité](COMPATIBILITY.fr.md) · [Validation](VALIDATION.fr.md)
+
+## Extension des SDK autorisés, version 0.1.0 conservée
+
+Le manifeste et les deux contrôles de build autorisent exactement les versions 6.4.2, 6.4.4 et 6.4.5. Le test optionnel du manifeste Hive vérifie ces trois versions et rejette 6.3.3, 6.4.1, 6.4.3, 6.4.6, 6.5.0, 7.0.0 et 6.4.5-beta.1. L’inspection des DLL officielles retrouve les 35 types et 110 références de membres SDK requis dans les versions 6.4.4 et 6.4.5. Aucun essai en jeu de ces versions n’a été réalisé ici.
+
+CoreCLR ne démarre toujours pas dans cet environnement (0x8007000E) ; aucune compilation ni exécution des tests .NET n’est revendiquée. La DLL distribuée est mise à jour uniquement dans sa ressource JSON de manifeste, avec des espaces de remplissage pour conserver sa taille. Elle n’est pas signée. Les en-têtes PE, métadonnées CLI, tous les octets hors de cette ressource JSON, le logo et la DLL Core sont vérifiés identiques. Les deux archives contiennent le manifeste mis à jour et conservent la version 0.1.0 du plugin et de l’assembly.

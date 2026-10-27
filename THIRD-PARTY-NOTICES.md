@@ -2,7 +2,7 @@
 
 **English** | [Français](THIRD-PARTY-NOTICES.fr.md)
 
-The updated OBSMixer 0.1.0 package includes **ChatPlexSDK_BS 6.4.2** by **HardCPP**, without the BeatSaberPlus modules. OBSMixer's own DLLs and version are unchanged.
+The full OBSMixer 0.1.0 release package includes **ChatPlexSDK_BS 6.4.2** by **HardCPP**, without the BeatSaberPlus modules. The mod remains version 0.1.0. Its dependency metadata also allows SDK 6.4.4 and 6.4.5; its executable code is unchanged. The without-SDK package omits the SDK and preserves the installed version.
 
 ## Origin
 
