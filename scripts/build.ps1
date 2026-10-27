@@ -55,6 +55,7 @@ $readmeFiles = [ordered]@{
 foreach ($entry in $readmeFiles.GetEnumerator()) {
     $readme = Get-Content -LiteralPath (Join-Path $projectRoot $entry.Key) -Raw -Encoding UTF8
     $readme = $readme.Replace('(README.md)', '(README-OBSMixer.md)').Replace('(README.fr.md)', '(README-OBSMixer.fr.md)')
+    $readme = $readme.Replace('(docs/images/', '(https://raw.githubusercontent.com/sannier3/BEAT-SABER-OBS-MIXER/main/docs/images/')
     foreach ($document in @('DEVELOPMENT.md', 'DEVELOPMENT.fr.md', 'COMPATIBILITY.md', 'COMPATIBILITY.fr.md', 'VALIDATION.md', 'VALIDATION.fr.md')) {
         $readme = $readme.Replace("($document)", "(https://github.com/sannier3/BEAT-SABER-OBS-MIXER/blob/main/$document)")
     }

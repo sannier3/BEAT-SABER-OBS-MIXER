@@ -9,6 +9,10 @@ OBS Mixer adds a floating audio mixer to **Beat Saber PC 1.40.8**. Adjust source
 
 The windows appear on the home screen, during song selection and while a song is paused. They stay hidden while you play.
 
+![VR overview: OBS preview above the audio mixer, with scene controls on the right](docs/images/overview.png)
+
+*Audio mixer, scene controls and Program preview together in Beat Saber.*
+
 ## Requirements
 
 | Component | Required version |
@@ -54,12 +58,21 @@ Connection on startup and automatic reconnection can be enabled in the same tab.
 
 ## Use the mixer
 
+![Eight-source mixer with stereo level meters, volume faders, mute and Details buttons](docs/images/mixer.png)
+
 Each audio strip contains the source name, live mono or stereo meters, a volume fader, its value in dB, a mute button and **Details**. On narrow strips, Details is shown as **…**.
 
 - Drag a fader to change the source volume in OBS.
 - Select the mute button to mute or unmute that source.
 - Open **Details** to change audio tracks 1–6, monitoring and the OBS audio sync offset. The offset adjusts the source's audio timing.
 - Use the page arrows when more sources are available.
+
+<details>
+<summary>View Details: audio tracks, monitoring and sync offset</summary>
+
+![Details panel in front of the mixer, showing six audio tracks, monitoring and sync offset](docs/images/audio-details.png)
+
+</details>
 
 These controls change OBS itself and affect its audio output. Source names and scene names match those configured in OBS.
 
@@ -71,9 +84,13 @@ Enable **General → OBS scenes window** to show scene buttons. This option is o
 
 The active scene is highlighted in blue. Buttons follow the order of the OBS Scenes list, from left to right and then onto the next row, with eight scenes per page. Changes made in OBS are reflected in the window.
 
+![OBS scene window with Start highlighted in blue and other scenes arranged in two columns](docs/images/scenes.png)
+
 **Selecting a scene changes Program, including in Studio Mode. If you are live, it changes the scene sent to your audience.**
 
 ## Optional OBS preview
+
+![OBS Program preview window with the eye toggle at the top left and the padlock at the top right](docs/images/obs-preview.png)
 
 Enable **General → OBS preview window** to show a floating image of OBS **Program output**, the picture sent to your audience. It does not show the separate Preview scene in Studio Mode. The window is off by default. When first enabled, its eye is closed; select it to start the image refresh.
 
@@ -99,6 +116,13 @@ Open the mod settings to adjust:
 | Sources | Pin, hide and reorder audio sources |
 
 Language defaults to **Automatic (Beat Saber)**: French when the game is in French, English otherwise. You can select **Français** or **English** at any time. Your choice is saved and applied without restarting.
+
+<details>
+<summary>View settings and the About panel</summary>
+
+![Mod settings in the center, logo and credits on the left, floating mixer on the right](docs/images/settings-and-credits.png)
+
+</details>
 
 **F8** shows or hides the mixer. **F9** resets the mixer's position in the current context and shows it. Neither shortcut displays the mixer during active gameplay.
 
@@ -130,10 +154,10 @@ For help, [open an issue](https://github.com/sannier3/BEAT-SABER-OBS-MIXER/issue
 
 ## Credits and links
 
-Created by **JBSAN**, using **Hardcpp's ChatPlexSDK_BS** for the VR interface.
+Created by **JBSAN**, using **Hardcpp's ChatPlexSDK_BS** for the VR interface. The Streamer Assistant logo appears centered at the top of the in-game About panel.
 
-- [Source code and releases](https://github.com/sannier3/BEAT-SABER-OBS-MIXER)
-- [JBSAN website](https://jbsan.fr)
+- [Project source code and releases](https://github.com/sannier3/BEAT-SABER-OBS-MIXER)
+- [GitHub profile: sannier3](https://github.com/sannier3)
 - [Related project: Streamer Assistant](https://streamerassistant.jbsan.fr)
 - [ChatPlexSDK_BS by Hardcpp](https://github.com/hardcpp/ChatPlexSDK_BS)
 - [BeatSaberMarkupLanguage](https://github.com/monkeymanboy/BeatSaberMarkupLanguage), [BS_Utils](https://github.com/Kylemc1413/Beat-Saber-Utils) and [obs-websocket](https://github.com/obsproject/obs-websocket)

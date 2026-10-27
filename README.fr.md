@@ -9,6 +9,10 @@ OBS Mixer ajoute un mixeur audio flottant dans **Beat Saber PC 1.40.8**. Réglez
 
 Les fenêtres apparaissent à l’accueil, dans la sélection des morceaux et pendant la pause. Elles restent masquées lorsque vous jouez.
 
+![Vue d’ensemble en VR : aperçu OBS au-dessus du mixeur, avec la fenêtre des scènes à droite](docs/images/overview.png)
+
+*Le mixeur, les scènes et l’aperçu Program réunis dans Beat Saber.*
+
 ## Prérequis
 
 | Élément | Version requise |
@@ -54,12 +58,21 @@ Vous pouvez activer la connexion au lancement et la reconnexion automatique dans
 
 ## Utiliser le mixeur
 
+![Mixeur à huit sources avec VU-mètres stéréo, curseurs de volume et boutons de son et de détails](docs/images/mixer.png)
+
 Chaque tranche affiche le nom de la source, ses niveaux mono ou stéréo, un curseur de volume, sa valeur en dB, un bouton pour couper le son et **Détails**. Sur les tranches étroites, Détails apparaît sous la forme **…**.
 
 - Déplacez un curseur pour modifier le volume de sa source dans OBS.
 - Utilisez le bouton de son pour couper ou rétablir cette source.
 - Ouvrez **Détails** pour modifier les pistes audio 1 à 6, le monitoring et le décalage audio OBS. Ce dernier ajuste la synchronisation du son de la source.
 - Utilisez les flèches pour changer de page si nécessaire.
+
+<details>
+<summary>Voir le panneau Détails : pistes, monitoring et décalage audio</summary>
+
+![Panneau Détails devant le mixeur, avec les six pistes audio, le monitoring et le décalage de synchronisation](docs/images/audio-details.png)
+
+</details>
 
 Ces commandes modifient directement OBS et sa sortie audio. Les noms des sources et des scènes sont ceux que vous avez définis dans OBS.
 
@@ -71,9 +84,13 @@ Activez **Général → Fenêtre des scènes OBS** pour afficher les boutons de 
 
 La scène active apparaît en bleu. Les boutons suivent l’ordre de la liste Scènes d’OBS, de gauche à droite puis à la ligne suivante, avec huit scènes par page. Les changements effectués dans OBS sont répercutés dans la fenêtre.
 
+![Fenêtre des scènes OBS, avec Start active en bleu et les autres scènes disposées sur deux colonnes](docs/images/scenes.png)
+
 **Sélectionner une scène change la scène Program, y compris en mode studio. Si vous êtes en direct, cela change la scène envoyée à votre public.**
 
 ## Aperçu OBS optionnel
+
+![Fenêtre d’aperçu Program OBS avec le bouton œil en haut à gauche et le cadenas en haut à droite](docs/images/obs-preview.png)
 
 Activez **Général → Fenêtre d’aperçu OBS** pour afficher une image de la **sortie Program**, celle qui est envoyée à votre public. Il ne s’agit pas de la scène Preview séparée du mode studio. Cette fenêtre est désactivée par défaut. À sa première activation, son œil est fermé : ouvrez-le pour lancer l’actualisation de l’image.
 
@@ -99,6 +116,13 @@ Les paramètres du mod regroupent :
 | Sources | Épinglage, masquage et ordre des sources audio |
 
 La langue est réglée sur **Automatique (Beat Saber)** par défaut : français si le jeu est en français, anglais dans les autres cas. Vous pouvez choisir **Français** ou **English** à tout moment. Le choix est enregistré et s’applique sans redémarrer.
+
+<details>
+<summary>Voir les paramètres et le panneau À propos</summary>
+
+![Paramètres du mod au centre, logo et crédits à gauche, mixeur flottant à droite](docs/images/settings-and-credits.png)
+
+</details>
 
 **F8** affiche ou masque le mixeur. **F9** réinitialise sa position dans le contexte courant et l’affiche. Ces raccourcis ne font pas apparaître le mixeur pendant une map.
 
@@ -130,10 +154,10 @@ Pour obtenir de l’aide, [ouvrez une issue](https://github.com/sannier3/BEAT-SA
 
 ## Crédits et liens
 
-Un projet de **JBSAN**, réalisé avec **ChatPlexSDK_BS de Hardcpp** pour l’interface VR.
+Un projet de **JBSAN**, réalisé avec **ChatPlexSDK_BS de Hardcpp** pour l’interface VR. Le logo Streamer Assistant apparaît centré en haut du panneau À propos dans le jeu.
 
-- [Code source et releases](https://github.com/sannier3/BEAT-SABER-OBS-MIXER)
-- [Site de JBSAN](https://jbsan.fr)
+- [Code source du projet et releases](https://github.com/sannier3/BEAT-SABER-OBS-MIXER)
+- [Profil GitHub : sannier3](https://github.com/sannier3)
 - [Projet associé : Streamer Assistant](https://streamerassistant.jbsan.fr)
 - [ChatPlexSDK_BS de Hardcpp](https://github.com/hardcpp/ChatPlexSDK_BS)
 - [BeatSaberMarkupLanguage](https://github.com/monkeymanboy/BeatSaberMarkupLanguage), [BS_Utils](https://github.com/Kylemc1413/Beat-Saber-Utils) et [obs-websocket](https://github.com/obsproject/obs-websocket)
