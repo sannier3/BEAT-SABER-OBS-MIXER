@@ -24,7 +24,7 @@ Les fenêtres apparaissent à l’accueil, dans la sélection des morceaux et pe
 | BS_Utils | 1.14.2 ou une version ultérieure compatible avec Beat Saber 1.40.8 |
 | OBS Studio | Serveur obs-websocket **v5** activé, intégré à OBS Studio depuis la version 28 |
 
-Installez les mods requis et leurs dépendances dans la même instance du jeu. Cette version nécessite précisément ChatPlexSDK_BS 6.4.2. Les autres versions de Beat Saber et les installations autonomes sur Quest ne sont pas prises en charge par ce package.
+ChatPlexSDK_BS **6.4.2 est inclus** dans le ZIP **OBSMixer-0.1.0.zip** mis à jour. Vous n’avez pas besoin de télécharger ni d’installer BS+. Installez séparément BSIPA, BSML, BS_Utils et leurs dépendances dans la même instance du jeu. Si une autre version de ChatPlexSDK_BS est déjà installée, utilisez une instance 1.40.8 distincte pour éviter de remplacer une version nécessaire à d’autres mods. Les autres versions de Beat Saber et les installations autonomes sur Quest ne sont pas prises en charge par ce package.
 
 OBS Mixer se connecte directement à OBS. Aucun compte sur un site ni installation de Streamer Assistant n’est nécessaire.
 
@@ -40,6 +40,7 @@ Les fichiers du mod doivent se trouver à ces emplacements :
 
 ```text
 Plugins/OBSMixer.dll
+Plugins/ChatPlexSDK_BS.dll
 Libs/OBSMixer.Core.dll
 ```
 
@@ -163,6 +164,8 @@ Un projet de **JBSAN**, réalisé avec **ChatPlexSDK_BS de Hardcpp** pour l’in
 - [BeatSaberMarkupLanguage](https://github.com/monkeymanboy/BeatSaberMarkupLanguage), [BS_Utils](https://github.com/Kylemc1413/Beat-Saber-Utils) et [obs-websocket](https://github.com/obsproject/obs-websocket)
 
 Pour compiler le projet, consultez [DEVELOPMENT.fr.md](DEVELOPMENT.fr.md). Les notes de compatibilité et de validation sont dans [COMPATIBILITY.fr.md](COMPATIBILITY.fr.md) et [VALIDATION.fr.md](VALIDATION.fr.md).
+
+Le package contient les mentions de copyright du SDK et les licences des composants tiers. Consultez les [mentions tierces](THIRD-PARTY-NOTICES.fr.md).
 
 ## Documentation
 

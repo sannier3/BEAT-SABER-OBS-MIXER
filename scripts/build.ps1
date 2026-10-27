@@ -48,6 +48,15 @@ if (Test-Path $package) { Remove-Item -LiteralPath $package -Recurse -Force }
 New-Item -ItemType Directory -Force -Path "$package/Plugins", "$package/Libs" | Out-Null
 Copy-Item -LiteralPath "$output/OBSMixer.dll" -Destination "$package/Plugins/OBSMixer.dll"
 Copy-Item -LiteralPath "$output/OBSMixer.Core.dll" -Destination "$package/Libs/OBSMixer.Core.dll"
+Copy-Item -LiteralPath $chatPlexPath -Destination "$package/Plugins/ChatPlexSDK_BS.dll"
+Get-ChildItem -LiteralPath (Join-Path $projectRoot 'third-party/ChatPlexSDK_BS') -Filter 'LICENSE.*.txt' | ForEach-Object {
+    Copy-Item -LiteralPath $_.FullName -Destination "$package/Plugins/$($_.Name)"
+}
+foreach ($notice in @('THIRD-PARTY-NOTICES.md', 'THIRD-PARTY-NOTICES.fr.md')) {
+    $noticeText = Get-Content -LiteralPath (Join-Path $projectRoot $notice) -Raw -Encoding UTF8
+    $noticeText = $noticeText.Replace('(README.md)', '(README-OBSMixer.md)').Replace('(README.fr.md)', '(README-OBSMixer.fr.md)')
+    Set-Content -LiteralPath (Join-Path $package $notice) -Value $noticeText -Encoding UTF8 -NoNewline
+}
 $readmeFiles = [ordered]@{
     'README.md' = 'README-OBSMixer.md'
     'README.fr.md' = 'README-OBSMixer.fr.md'
