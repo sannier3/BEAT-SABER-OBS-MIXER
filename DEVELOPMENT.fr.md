@@ -78,6 +78,10 @@ Le rendu utilise UnityEngine.ImageConversionModule.dll, une référence du jeu n
 
 Les sept poses initiales (mixeur et scènes pour accueil/sélection/pause, plus aperçu partagé) reprennent les coordonnées fournies par JBSAN. Les trois cadenas sont fermés par défaut. Fenêtre du mixeur : 180 × 130, échelle 0,75, texte 3,0, huit sources par page et aucune limite totale. Aperçu désactivé et image masquée, intervalle 100 ms. Le raccourci F9 restaure la pose initiale du mixeur correspondant au contexte courant. Les valeurs de repli des réglages invalides et des poses nulles utilisent ces mêmes paramètres. La configuration reste en version 5 et aucun fichier utilisateur existant n’est remplacé.
 
+## Logo À propos
+
+Le PNG fourni est enregistré dans `src/OBSMixer.Plugin/Resources/StreamerAssistant.png` et embarqué dans la DLL sous le nom `OBSMixer.Resources.StreamerAssistant.png`. Aucun fichier supplémentaire n’est nécessaire à l’installation. La vue À propos le décode avec la référence existante au module ImageConversion, conserve sa transparence et ses proportions, le réutilise lors des changements de langue et libère sprite et texture à sa destruction. Conserver l’image originale pour compiler depuis les sources.
+
 ## Documentation
 
 [Guide utilisateur](README.fr.md) · [Développement](DEVELOPMENT.fr.md) · [Compatibilité](COMPATIBILITY.fr.md) · [Validation](VALIDATION.fr.md)

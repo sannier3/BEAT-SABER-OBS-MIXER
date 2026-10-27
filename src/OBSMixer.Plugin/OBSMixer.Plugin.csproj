@@ -28,6 +28,7 @@
     <Reference Include="Unity.TextMeshPro"><HintPath>$(ManagedDir)/Unity.TextMeshPro.dll</HintPath><Private>false</Private></Reference>
   </ItemGroup>
   <ItemGroup><EmbeddedResource Include="manifest.json" LogicalName="OBSMixer.manifest.json" /></ItemGroup>
+  <ItemGroup><EmbeddedResource Include="Resources/StreamerAssistant.png" LogicalName="OBSMixer.Resources.StreamerAssistant.png" /></ItemGroup>
   <Target Name="CheckGameReferences" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(ManagedDir)/BeatSaber.ViewSystem.dll')" Text="Missing Beat Saber 1.40.8 game assembly: BeatSaber.ViewSystem.dll. Check BeatSaberDir." />
     <Error Condition="!Exists('$(ManagedDir)/BGLib.Polyglot.dll')" Text="Missing Beat Saber 1.40.8 game assembly: BGLib.Polyglot.dll. Check BeatSaberDir." />

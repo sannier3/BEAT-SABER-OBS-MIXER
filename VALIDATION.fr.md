@@ -128,7 +128,7 @@ Le panneau de détails utilise max(0,95 ; opacité générale) pour son fond, in
 
 Le code officiel obs-websocket (Obs_ArrayHelper.cpp, GetSceneList) attribue les indices à partir du bas et inverse le tableau avant envoi. Le parseur trie désormais sceneIndex par ordre décroissant pour retrouver le haut vers le bas du dock OBS. Le rendu existant remplit déjà les lignes de gauche à droite. Le même parseur traite GetSceneList et SceneListChanged ; sans index, le tri stable conserve l'ordre reçu. Un test réseau supplémentaire couvre dix scènes, une permutation et la scène active après réordonnancement. Total : 29 cas hors jeu, 30 avec le test optionnel du manifeste.
 
-Un contrôleur de vue dédié occupe le panneau droit du flow des paramètres, avec des blocs Code source / Site de JBSAN / Projet associé Streamer Assistant / SDK de Hardcpp. Les liens s'ouvrent par Application.OpenURL ; les contrôleurs central et droit sont détruits avec le flow. Les signatures XUI et la position droite dans le tuple ont été vérifiées dans les sources SDK 6.4.2.
+Un contrôleur de vue dédié occupe le panneau droit du flow des paramètres, avec des blocs Code source du projet / Projet associé Streamer Assistant / SDK de Hardcpp. Les liens s'ouvrent par Application.OpenURL ; les contrôleurs central et droit sont détruits avec le flow. Les signatures XUI et la position droite dans le tuple ont été vérifiées dans les sources SDK 6.4.2.
 
 Validation locale : analyse syntaxique C#, XML et JSON. Compilation, exécution des tests et rendu VR non validés ici (CoreCLR indisponible). À vérifier au casque : détails lisibles avec opacité générale 0 et 1 ; ordre OBS à travers les pages et après réordonnancement ; crédits lisibles et complets à droite, liens ouvrant les bonnes pages.
 
@@ -177,6 +177,12 @@ Les README français/anglais et le guide développeur décrivent les nouveaux pa
 ## Documentation bilingue
 
 Les quatre documents ont désormais un fichier anglais par défaut et une version française `.fr.md`. Chacun propose un changement de langue et des liens de documentation qui restent dans la langue choisie. Les liens des README de release sont réécrits vers le bon README distribué ou le bon document technique dans le dépôt. Les vérifications statiques couvrent les huit fichiers, les liens entre traductions, le routage par langue et les destinations du package. Cette mise à jour documentaire ne modifie pas le comportement du plugin et n’ajoute aucun résultat de validation en jeu.
+
+## Logo À propos et liens GitHub
+
+Le PNG Streamer Assistant fourni est inclus sans modification dans `src/OBSMixer.Plugin/Resources/StreamerAssistant.png` et embarqué sous le nom `OBSMixer.Resources.StreamerAssistant.png`. La vue À propos le charge une fois par instance avec ImageConversion, conserve sa transparence et ses proportions, puis libère texture et sprite à sa destruction. Les changements de langue réutilisent le logo chargé. Il est placé en haut au centre du panneau latéral SDK de 120 × 80. Le placement explicite garde les crédits dans le panneau sans défilement.
+
+Le lien du site personnel est retiré. Deux boutons distincts ouvrent désormais le profil GitHub sannier3 et le dépôt du projet ; le projet Streamer Assistant et les crédits au SDK de Hardcpp sont conservés. Les deux langues du README reprennent ces liens. Les vérifications statiques couvrent la déclaration de ressource, les octets du PNG, la syntaxe C#, les limites du placement, les liens de langue et le retrait de l’URL personnelle. La compilation finale et le rendu au casque restent non vérifiés localement.
 
 ## Documentation
 

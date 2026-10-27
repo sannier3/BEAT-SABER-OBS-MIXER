@@ -76,6 +76,10 @@ Rendering uses UnityEngine.ImageConversionModule.dll, a game reference that is n
 
 The seven initial poses (mixer and scenes for home/song selection/pause, plus the shared preview) use the coordinates supplied by JBSAN. All three padlocks start locked. Mixer window: 180 × 130, scale 0.75, text size 3.0, eight sources per page and no total source limit. Preview starts disabled with the image hidden and a 100 ms interval. F9 restores the mixer's initial pose for the current context. Invalid numeric values and null poses fall back to these same settings. Configuration remains at version 5 and no existing user file is overwritten.
 
+## About artwork
+
+The supplied PNG is stored in `src/OBSMixer.Plugin/Resources/StreamerAssistant.png` and embedded in the plugin DLL as `OBSMixer.Resources.StreamerAssistant.png`. It is not a separate installation dependency. The About view decodes it with the existing ImageConversion module reference, preserves transparency and aspect ratio, caches it across language changes and disposes its sprite/texture with the view. Keep the original asset when building from source.
+
 ## Documentation
 
 [User guide](README.md) · [Development](DEVELOPMENT.md) · [Compatibility](COMPATIBILITY.md) · [Validation](VALIDATION.md)

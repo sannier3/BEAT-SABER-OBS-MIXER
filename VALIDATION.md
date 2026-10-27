@@ -121,7 +121,7 @@ Details uses max(0.95, general opacity) for its background, independently of mix
 
 Official obs-websocket code (Obs_ArrayHelper.cpp, GetSceneList) numbers scenes from the bottom and reverses the array before sending it. The parser now sorts sceneIndex in descending order to restore the OBS dock's top-to-bottom order. Rendering already fills each row from left to right. GetSceneList and SceneListChanged share this parser; when indices are missing, the stable sort preserves incoming order. A new network test covers ten scenes, reordering and the active scene after reordering. Total: 29 cases without the game, 30 with the optional manifest test.
 
-At that revision, a dedicated view occupied the right settings panel, with blocks for source code, JBSAN's website, the related Streamer Assistant project and Hardcpp's SDK. Application.OpenURL opens links; center and right controllers are destroyed with the flow. XUI signatures and the right-hand tuple position were checked in SDK 6.4.2 sources.
+At that revision, a dedicated view occupied the right settings panel, with blocks for project source code, the related Streamer Assistant project and Hardcpp's SDK. Application.OpenURL opens links; center and right controllers are destroyed with the flow. XUI signatures and the right-hand tuple position were checked in SDK 6.4.2 sources.
 
 Local validation: C# syntax, XML and JSON analysis. Compilation, tests and VR rendering were not validated locally because CoreCLR was unavailable. Headset checks needed: readable Details at general opacity 0 and 1; OBS order across pages and after reordering; readable, complete right-hand credits and correct link destinations.
 
@@ -166,6 +166,12 @@ English/French README files and the developer guide describe the new defaults. S
 ## Bilingual documentation
 
 All four documents now have an English default file and a French `.fr.md` counterpart. Each includes a language switch and documentation links that stay in the selected language. Release README links are rewritten to the matching packaged README or the matching technical document in the repository. Static checks cover all eight files, counterpart links, language routing and packaged link destinations. This documentation update does not change plugin behavior or add an in-game validation result.
+
+## About artwork and GitHub links
+
+The supplied Streamer Assistant PNG is included unchanged at `src/OBSMixer.Plugin/Resources/StreamerAssistant.png` and embedded as `OBSMixer.Resources.StreamerAssistant.png`. The About view loads it once per view instance using ImageConversion, preserves transparency and aspect ratio, and releases its texture/sprite when destroyed. Language changes reuse the loaded artwork. It is placed at the top center of the SDK's 120 × 80 side panel. Explicit placement keeps the credits within the panel without scrolling.
+
+The personal website link has been removed. Separate buttons now open the sannier3 GitHub profile and the project repository; the Streamer Assistant project and Hardcpp SDK credits remain. Both README languages have matching credit links. Static checks cover the resource declaration, exact PNG bytes, C# syntax, layout bounds, language links and removal of the personal website URL. Final compilation and headset rendering remain unverified locally.
 
 ## Documentation
 

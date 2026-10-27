@@ -80,7 +80,6 @@ namespace OBSMixer.Core
             { "À propos & crédits", "About & credits" },
             { "Un projet de JBSAN", "A project by JBSAN" },
             { "CODE SOURCE · GITHUB", "SOURCE CODE · GITHUB" },
-            { "SITE DE JBSAN", "JBSAN WEBSITE" },
             { "PROJET ASSOCIÉ · STREAMER ASSISTANT", "RELATED PROJECT · STREAMER ASSISTANT" },
             { "SDK & REMERCIEMENTS", "SDK & THANKS" },
             { "Interface réalisée avec ChatPlexSDK_BS,\nle SDK de Hardcpp. Merci pour son travail !", "Interface built with ChatPlexSDK_BS,\nHardcpp's SDK. Thanks for his work!" },
